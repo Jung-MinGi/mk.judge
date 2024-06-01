@@ -12,7 +12,6 @@ import java.util.Enumeration;
 public class HomeController {
     @GetMapping("/")
     public String home() {
-
         return "index";
     }
 
