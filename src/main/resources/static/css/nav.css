@@ -1,0 +1,12 @@
+nav li {
+        background-color: #888;
+        display: block;
+        margin-right: 7px;
+        border: 1px solid #777;
+        }
+.nav-link{
+        color: white;
+        }
+#top{
+box-shadow: 0 3px 3px 0 #999;
+    }

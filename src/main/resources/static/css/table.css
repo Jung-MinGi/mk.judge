@@ -1,0 +1,27 @@
+    #content {
+        margin: 10px auto 10px auto;
+        max-width: 85%;
+        padding:10px;
+
+    }
+
+    div{
+        display: block;
+     unicode-bidi: isolate;
+    }
+    table, th, td {
+        border: 1px solid gray;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+    }
+     a {
+        color: #0076C0;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #0076C0;
+        text-decoration: underline;
+    }
