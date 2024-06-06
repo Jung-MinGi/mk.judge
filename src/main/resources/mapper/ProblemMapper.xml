@@ -2,13 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.algorihm.mk.judge.mybatis.mapper.ProblemMapper">
     <insert id="registerProb">
-        insert into problems(title,content,answer,category,grade) values(#{title},#{content},#{answer},#{category},#{grade});
+        insert into problems(title,content,answer,category,level)
+        values(#{title},#{content},#{answer},#{category},#{level});
     </insert>
 
     <select id="findById" resultType="Problem">
-        select * from problems where id=#{id};
+        select * from problems where id=#{id}
     </select>
+
+    <select id="getCount" resultType="Integer">
+        select count(*) from (
+        select p.*,f.removed from problems p left join flag f on p.id=f.id where f.removed=0 or f.removed is null
+        ) as x
+        <where>
+            <if test="list != null and list.size() > 0">
+                <foreach collection="list" item="level">
+                    or x.level = #{level}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
     <select id="getProblem" resultType="Problem">
-        select * from problems;
+        <bind name="start" value="(page-1)*range"/>
+        select * from (
+        select p.*,f.removed from problems p left join flag f on p.id=f.id where f.removed=0 or f.removed is null
+        ) as x
+        <where>
+            <if test="list != null and list.size() > 0">
+                <foreach collection="list" item="level">
+                    or x.level = #{level}
+                </foreach>
+            </if>
+        </where>
+        limit #{start},#{range};
+    </select>
+
+    <select id="getLevel" resultType="Level">
+        select distinct level from problems;
     </select>
 </mapper>

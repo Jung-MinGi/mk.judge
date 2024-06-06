@@ -2,7 +2,6 @@
         margin: 10px auto 10px auto;
         max-width: 85%;
         padding:10px;
-
     }
 
     div{
@@ -25,3 +24,12 @@
         color: #0076C0;
         text-decoration: underline;
     }
+
+    .input-group{
+        width:200px;
+        margin-left: 76.2%;
+
+    }
+   #pageBar {
+               margin-left: 38%;
+         }

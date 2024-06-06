@@ -1,6 +1,6 @@
 package com.algorihm.mk.judge.dao;
 
-import com.algorihm.mk.judge.domain.Problem;
+import com.algorihm.mk.judge.domain.*;
 import com.algorihm.mk.judge.mybatis.mapper.ProblemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,7 +22,19 @@ public class ProblemRepositoryImpl implements ProblemRepository{
     }
 
     @Override
-    public ArrayList<Problem> getProblem() {
-        return mapper.getProblem();
+    public ArrayList<Problem> getProblem(OptionAndPage li) {
+
+        return mapper.getProblem(li);
+    }
+
+
+    @Override
+    public ArrayList<Level> getLevel() {
+        return mapper.getLevel();
+    }
+
+    @Override
+    public int getCount(OptionAndPage li) {
+        return mapper.getCount(li);
     }
 }

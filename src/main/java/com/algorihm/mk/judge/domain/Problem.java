@@ -9,15 +9,15 @@ public class Problem {
     String content;
     String answer;
     Category category;
-    Grade grade;
+    Level level;
 
-    public Problem(int id, String title, String content, String answer, Category category, Grade grade) {
+    public Problem(int id, String title, String content, String answer, Category category, Level level) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.answer = answer;
         this.category = category;
-        this.grade = grade;
+        this.level = level;
     }
 
     public Problem() {

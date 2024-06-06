@@ -18,7 +18,8 @@ private final ProblemService service;
         model.addAttribute("id", ret.getId());
         model.addAttribute("title", ret.getTitle());
         model.addAttribute("content", ret.getContent());
-        model.addAttribute("grade", ret.getGrade());
+        model.addAttribute("grade", ret.getLevel());
         return "prob_detail";
     }
+
 }

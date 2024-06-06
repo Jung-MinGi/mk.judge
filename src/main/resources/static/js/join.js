@@ -65,7 +65,7 @@ function join(){
 
         fetch('/join', {
              method: 'PUT',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type'= 'application/json'},
             body: JSON.stringify(data)
     })
         .then(response => response.text())
