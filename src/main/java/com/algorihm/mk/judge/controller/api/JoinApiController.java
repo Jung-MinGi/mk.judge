@@ -18,17 +18,12 @@ public class JoinApiController {
     @GetMapping("/join/id")//아이디중복확인 핸들러
     public boolean idDoubleCheck(@RequestParam String username){
 
-        boolean b = service.doubleCheck(username);
-        System.out.println("username = " + username);
-        System.out.println("b = " + b);
-        System.out.println("****");
-        return b;
+        return service.doubleCheck(username);
     }
     @PutMapping("/join")//회원등록 핸들러
     public String joinUser(@RequestBody LoginDto loginDto) throws JsonProcessingException {
-        System.out.println("loginDto = " + loginDto);
         service.join(loginDto);
-        return "/";
+        return "login";
     }
 
     @GetMapping("/tmp/getAll")

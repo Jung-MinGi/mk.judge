@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.algorihm.mk.judge.mybatis.mapper.UserMapper">
     <insert id="join">
-        insert into `User`(username,password,level) values(#{username},#{password},#{level});
+        insert into `User`(username,password,level,role) values(#{username},#{password},#{level},#{role});
     </insert>
 
     <select id="doubleCheck" resultType="Integer">

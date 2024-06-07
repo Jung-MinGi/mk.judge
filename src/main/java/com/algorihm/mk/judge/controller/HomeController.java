@@ -12,8 +12,6 @@ import java.util.Enumeration;
 public class HomeController {
     @GetMapping("/")
     public String home(HttpServletRequest request) {
-        String wjdalsrl = request.getHeader("wjdalsrl");
-        System.out.println("wjdalsrl = " + wjdalsrl);
         return "index";
     }
 
@@ -31,5 +29,9 @@ public class HomeController {
     @GetMapping("/prob_list")
     public String prob() {
         return "prob_list";
+    }
+    @GetMapping("/manager")
+    public String manager() {
+        return "manager";
     }
 }
