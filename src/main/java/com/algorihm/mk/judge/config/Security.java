@@ -1,5 +1,7 @@
 package com.algorihm.mk.judge.config;
 
+import com.algorihm.mk.judge.SessionCheckFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,13 +12,14 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class Secutity {
+public class Security {
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/prob_list").authenticated()
-//                        .requestMatchers("/css/**","/js/**","/images/**").permitAll()
+                        .requestMatchers("/css/**","/js/**","/images/**").permitAll()
                         .anyRequest().permitAll());
 
 

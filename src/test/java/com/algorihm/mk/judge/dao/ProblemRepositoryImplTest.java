@@ -1,7 +1,6 @@
 package com.algorihm.mk.judge.dao;
 
 import com.algorihm.mk.judge.domain.Category;
-import com.algorihm.mk.judge.domain.Grade;
 import com.algorihm.mk.judge.domain.Level;
 import com.algorihm.mk.judge.domain.Problem;
 import com.algorihm.mk.judge.mybatis.mapper.ProblemMapper;
@@ -11,8 +10,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 

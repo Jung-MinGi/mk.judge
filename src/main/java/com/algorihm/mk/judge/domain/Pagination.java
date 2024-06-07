@@ -7,7 +7,4 @@ public class Pagination {
 
     int page;
     int range;
-
-
-
 }
