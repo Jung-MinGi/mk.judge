@@ -1,4 +1,4 @@
-//window.onload = init();
+
 function init(sort,page) {
     var tag = "  <table class='grid' style='width:100%'>";
     tag += '<h2>문제</h2>';
@@ -25,10 +25,12 @@ function init(sort,page) {
         page: page
     };
 
-//    alert(JSON.stringify(i));
+
     fetch("/problem",{
     method:'put',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+//     'Authorization': 'Bearer ' + token,
+    'Content-Type': 'application/json' },
     body:JSON.stringify(i)
     }).then(function (res) {
         return res.json();

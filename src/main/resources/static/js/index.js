@@ -19,3 +19,60 @@ document.getElementById("content").innerHTML=tag;;
 
         });
 });
+
+document.getElementById("mg").addEventListener('click', function (event) {
+
+    const tk = localStorage.getItem("token");
+    var data = {
+        token: tk
+    }
+    console.log(data.token);
+    if (tk!=null) {
+        fetch("/manager", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + tk,
+                'Content-Type': 'application/json'
+            }
+        }).then(function(res){
+            return res.text();
+        }).then(function(data){
+            alert(data);
+        })
+    } else {
+
+    }
+})
+
+
+document.getElementById("prob_list").addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const tk = localStorage.getItem("token");
+    var data = {
+        token: tk
+    }
+//    console.log(data.token);
+//    if (tk != null) {
+        fetch("/prob_list", {
+            method: 'get',
+            headers: {
+//                'Authorization': 'Bearer ' + tk,
+                'Content-Type': 'application/json'
+            }
+        }).then(function (res) {
+            if (res.ok) {
+                return res.text();
+            } else {
+                alert("로그인후 이용가능합니다.")
+                window.location.href = "/login";
+            }
+        }).then(function (data) {
+            document.write(data);
+        })
+//    } else {
+//        alert("로그인후 이용가능합니다.")
+//        window.location.href = "/login";
+//    }
+})
+
