@@ -33,7 +33,19 @@ function changeTag() {
 function myPage() {
     document.getElementById("myPage").addEventListener('click', function (event) {
         event.preventDefault();
-        alert("mypage");
+        fetch("/myPage", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                'Content-Type': 'application/json'
+            }
+
+        }).then(function (res) {
+            return res.text();
+        }).then(function (data) {
+            document.close();
+            document.write(data);
+        })
     })
 
 }

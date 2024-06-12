@@ -63,6 +63,9 @@ public class HomeController {
         return "manager";
     }
 
-
+    @GetMapping("/myPage")
+    public String myPage(Model model) {
+        return "myPage";
+    }
 
 }

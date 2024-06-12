@@ -21,27 +21,15 @@
                         <a class="nav-link" href="/">처음으로</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/prob_list">문제목록</a>
+                        <a class="nav-link" href="/prob_list" id="prob_list">문제목록</a>
                     </li>
-                    <!--                -->
-                    <th:block th:if="${username}">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="logoutBtn">로그아웃</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">내 정보</a>
-                        </li>
-                    </th:block>
-                    <th:block th:unless="${username}">
-                        <li class="nav-item loginUser">
-                            <a class="nav-link" href="/join">회원 등록</a>
-                        </li>
-                        <li class="nav-item loginUser">
-                            <a class="nav-link" href="/login">로그인</a>
-                        </li>
-                    </th:block>
-                    <!--                -->
 
+                    <li class="nav-item loginUser">
+                        <a class="nav-link" href="/join" id="join">회원 등록</a>
+                    </li>
+                    <li class="nav-item loginUser">
+                        <a class="nav-link" href="/login" id="login">로그인</a>
+                    </li>
                 </ul>
             </div>
         </div>

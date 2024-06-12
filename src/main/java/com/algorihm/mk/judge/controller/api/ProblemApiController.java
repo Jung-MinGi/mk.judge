@@ -20,18 +20,7 @@ public class ProblemApiController {
     public ArrayList<Problem> getAllProblem(@RequestBody OptionAndPage opt) {
         return service.getProblem(opt);
     }
-//    @GetMapping("/problem/{id}")//특정 문제 조회
-//    public String getProblem(@PathVariable String id){
-//        return null;
-//    }
-//
-//    @PutMapping("/problem/sort")//특정 문제 등급으로 조회
-//    public String findByLevel(@RequestBody ArrayList<Level> list){
-//        for (Level level : list) {
-//            System.out.println("level = " + level);
-//        }
-//        return null;
-//    }
+
 
     //문제 등록
     @PostMapping("/problem")

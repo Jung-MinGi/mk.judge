@@ -22,9 +22,10 @@ public class CheckIsExpiredJwtFilter extends OncePerRequestFilter {
         }
         String token = authorization.split(" ")[1];
         String requestURI = request.getRequestURI();
+        System.out.println("jwtUtils = " + jwtUtils.isExpired(token));
         try {
-            if(requestURI.equals("/isExpired") && jwtUtils.isExpired(token)){
-                filterChain.doFilter(request, response);
+            if(requestURI.equals("/isExpired") && !jwtUtils.isExpired(token)){
+                return;
             }else filterChain.doFilter(request, response);
 
         }catch (Exception e){
