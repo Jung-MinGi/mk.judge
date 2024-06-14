@@ -62,8 +62,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println("username = " + username);
         System.out.println("role = " + role);
 //        String jwt = jwtUtils.createJwt(username, role, 7 * 24 * 60 * 60 * 1000L);//일주일
-//        String jwt = jwtUtils.createJwt(username, role, 30 * 1000L);//30초
-        String jwt = jwtUtils.createJwt(username, role, 3600000L);//1시간
+        String jwt = jwtUtils.createJwt(username, role, 10 * 1000L);//30초
+//        String jwt = jwtUtils.createJwt(username, role, 3600000L);//1시간
 
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");

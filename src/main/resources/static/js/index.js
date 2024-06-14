@@ -76,3 +76,25 @@ document.getElementById("prob_list").addEventListener('click', function (event) 
 //    }
 })
 
+
+function myPage() {
+    document.getElementById("myPage").addEventListener('click', function (event) {
+        event.preventDefault();
+        fetch("/api/myPage", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                'Content-Type': 'application/json'
+            }
+
+        }).then(function (res) {
+           if(res.ok){
+            alert(res.ok);
+            window.location.href="/myPage";
+           }else throw new Error();
+        }).catch(error=>{
+            alert("로그인 후 이용 가능 합니다: "+error);
+             window.location.href="/login";
+        })
+    })
+}

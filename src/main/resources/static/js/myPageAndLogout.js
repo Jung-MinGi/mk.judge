@@ -12,19 +12,15 @@ function changeTag() {
                 var element = document.getElementById("join");
                 element.id = "myPage";
                 element.textContent = '마이페이지';
-                element.onclick = myPage();
-
+//                element.onclick = myPage();
+                element.href="/myPage";
 
                 element = document.getElementById("login");
                 element.id = "logout";
                 element.textContent = '로그아웃';
                 element.onclick = logout();
-            } else {
-                console.log(res.text());
             }
         })
-
-
     }
 }
 
@@ -40,13 +36,16 @@ function myPage() {
 
         }).then(function (res) {
            if(res.ok){
-           alert(res.ok);
+            alert(res.ok);
             window.location.href="/myPage";
-           }
+           }else throw new Error();
+        }).catch(error=>{
+            alert("로그인 후 이용 가능 합니다: "+error);
+             window.location.href="/login";
         })
     })
-
 }
+
 
 function logout() {
     document.getElementById("logout").addEventListener('click', function (event) {

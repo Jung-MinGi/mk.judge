@@ -25,8 +25,6 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
         String token = authorization.split(" ")[1];
-//        String requestURI = request.getRequestURI();
-//        System.out.println("requestURI = " + requestURI);
 //        if (jwtUtils.isExpired(token)) {
 //            System.out.println("token isExpired");
 //            filterChain.doFilter(request, response);

@@ -3,9 +3,13 @@ package com.algorihm.mk.judge.controller.api;
 import com.algorihm.mk.judge.domain.*;
 import com.algorihm.mk.judge.service.ProblemService;
 import com.algorihm.mk.judge.service.UserService;
+import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -16,6 +20,13 @@ import java.util.Random;
 public class MyPageApiController {
     private final UserService userService;
     private final ProblemService problemService;
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String exHandler(ExpiredJwtException e) {
+        System.out.println("MyPageApiController.exHandler");
+        return "zzzzzz";
+    }
 
     @GetMapping("/api/myPage")
     public MyPageDto myPage() {
