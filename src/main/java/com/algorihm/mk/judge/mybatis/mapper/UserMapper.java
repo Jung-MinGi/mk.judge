@@ -10,5 +10,5 @@ public interface UserMapper {
     ArrayList<User> getAllUser();
     void join(User user);
     int doubleCheck(String username);
-    User getUserByUsername(String username);
+    User findByUsername(String username);
 }

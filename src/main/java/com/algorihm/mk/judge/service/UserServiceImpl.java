@@ -34,6 +34,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public boolean doubleCheck(String username) {
         if(username.matches(Const.REGEX)) return userRepository.doubleCheck(username);
         return false;

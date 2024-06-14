@@ -11,5 +11,5 @@ public interface UserRepository {
 
     ArrayList<User> getAllUser();
 
-    User getUserByUsername(String username);
+    User findByUsername(String username);
 }

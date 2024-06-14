@@ -1,10 +1,10 @@
 
 function init(sort,page) {
-    var tag = "  <table class='grid' style='width:100%'>";
+    var tag = "<table class='grid' style='width:100%'>";
     tag += '<h2>문제</h2>';
 
     tag += '<div><form class="sky-form" action="#" style="margin-top: 5px;"><div class="input-group">';
-    tag += '<input type="text" class="form-control" placeholder="문제검색" name="search" value = ""><span class="input-group-btn"><button class="btn btn-u" type="submit">🔎</button></span></div></form></div>';
+    tag += '<input type="text" class="form-control" placeholder="문제검색" name="search" value = ""><span class="input-group-btn"><button class="btn btn-u" id="titleSearch" type="submit">🔎</button></span></div></form></div>';
 
     tag += '<div><button id="hidden">option</button></div><div id="opt"></div>';
     tag += '<br>';
@@ -45,6 +45,13 @@ function init(sort,page) {
         }
         tag += '</table>';
         document.getElementById("content").innerHTML = tag;
+        //        문제검색버튼에 이벤트 추가하는 코드
+        document.getElementById("titleSearch").addEventListener('click', function (event) {
+            const inputElement = document.getElementsByName('search')[0].value;
+
+                           alert("문제검색: "+inputElement);
+           });
+         //
     }).then(function () {
         createOption();
         createPageBar(sort,page);//todo
@@ -66,7 +73,7 @@ function createOption() {
                 var tag = '<div class="form-check">';
                 tag+='<hr>';
                 tag += '<form id="optForm">';
-                tag+='<p>문제 난이도</P>';
+                tag+='<p>•문제 난이도</P>';
                 for (var i in data) {
                     tag += '<div class="form-check">';
                     tag += '<label class="form-check-label" for="flexCheck' + i + '">' + data[i] + '</label>';
@@ -81,6 +88,8 @@ function createOption() {
                 document.getElementById("optBtn").addEventListener('click', function (event) {
                     probSort();
                 });
+
+
             })
         }
     })

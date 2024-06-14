@@ -12,8 +12,8 @@
 
     <select id="getCount" resultType="Integer">
         select count(*) from (
-        select p.*,f.removed from problems p left join flag f on p.id=f.id where f.removed=0 or f.removed is null
-        ) as x
+        select * from problems p where p.removed=false ) as x
+
         <where>
             <if test="list != null and list.size() > 0">
                 <foreach collection="list" item="level">
@@ -25,9 +25,7 @@
 
     <select id="getProblem" resultType="Problem">
         <bind name="start" value="(page-1)*range"/>
-        select * from (
-        select p.*,f.removed from problems p left join flag f on p.id=f.id where f.removed=0 or f.removed is null
-        ) as x
+        select * from ( select * from problems as p where p.removed=false) as x
         <where>
             <if test="list != null and list.size() > 0">
                 <foreach collection="list" item="level">
@@ -41,4 +39,20 @@
     <select id="getLevel" resultType="Level">
         select distinct level from problems;
     </select>
+
+    <select id="getSolvedAndCategory" resultType="Solved">
+        select count(*) as cnt,p.category from problems p join solved s on p.id = s.id where username=#{username} group
+        by p.category;
+    </select>
+
+    <select id="findByTitle" resultType="Problem">
+        <!--        -->
+    </select>
+
+    <delete id="delete">
+        UPDATE problems SET removed = true where id = #{id};
+    </delete>
+
+    <select id="solvedProblems" resultType="Problem">
+        select * from problems p join solved s on p.id = s.id where p.removed=false and s.username=#{username};    </select>
 </mapper>

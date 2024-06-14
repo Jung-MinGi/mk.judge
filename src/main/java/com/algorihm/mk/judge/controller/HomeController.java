@@ -2,15 +2,17 @@ package com.algorihm.mk.judge.controller;
 
 import com.algorihm.mk.judge.domain.LoginDto;
 import com.algorihm.mk.judge.domain.Problem;
+import com.algorihm.mk.judge.domain.User;
 import com.algorihm.mk.judge.service.ProblemService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -18,8 +20,9 @@ public class HomeController {
     private final ProblemService service;
 
     @ModelAttribute
-    private static void loginUsernameAddModel(Model model) {
+    public static void loginUsernameAddModel(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println("name = " + name);
         model.addAttribute("username", (name.equals("anonymousUser")) ? null : name);
     }
 
@@ -66,6 +69,11 @@ public class HomeController {
     @GetMapping("/myPage")
     public String myPage(Model model) {
         return "myPage";
+    }
+
+    @GetMapping("/ex")
+    public void jsonError() {
+        throw new RuntimeException();
     }
 
 }

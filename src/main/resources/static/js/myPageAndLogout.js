@@ -28,12 +28,10 @@ function changeTag() {
     }
 }
 
-
-
 function myPage() {
     document.getElementById("myPage").addEventListener('click', function (event) {
         event.preventDefault();
-        fetch("/myPage", {
+        fetch("/api/myPage", {
             method: 'get',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("token"),
@@ -41,10 +39,10 @@ function myPage() {
             }
 
         }).then(function (res) {
-            return res.text();
-        }).then(function (data) {
-            document.close();
-            document.write(data);
+           if(res.ok){
+           alert(res.ok);
+            window.location.href="/myPage";
+           }
         })
     })
 

@@ -13,7 +13,7 @@
         select * from `User`;
     </select>
 
-    <select id="getUserByUsername" resultType="User">
+    <select id="findByUsername" resultType="User">
         select * from `User` where username = #{username};
     </select>
 

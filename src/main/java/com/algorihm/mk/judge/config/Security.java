@@ -16,6 +16,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -24,7 +25,8 @@ public class Security {
     private final AuthenticationConfiguration configuration;
     private final JwtUtils jwtUtils;
 
-private final ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
+
     //    @Bean//세션기반
 //    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 //        http.csrf(AbstractHttpConfigurer::disable)
@@ -71,7 +73,7 @@ private final ObjectMapper objectMapper;
                 .addFilterBefore(new CheckIsExpiredJwtFilter(jwtUtils), JwtFilter.class);
 
         http
-                .addFilterAfter(new LoginFilter(authenticationManager(configuration), jwtUtils,objectMapper), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAfter(new LoginFilter(authenticationManager(configuration), jwtUtils, objectMapper), UsernamePasswordAuthenticationFilter.class);
         //세션 설정
         http
                 .sessionManagement((session) -> session
@@ -90,5 +92,4 @@ private final ObjectMapper objectMapper;
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 }

@@ -1,0 +1,13 @@
+   /* div 크기 고정 */
+        .container {
+            display:flex;,
+            align-items:center;
+            justify-content:center;
+            gap: 200px;
+        }
+
+        /* canvas 크기 고정 */
+        #chart {
+            width: 100%
+            height: 100%
+        }

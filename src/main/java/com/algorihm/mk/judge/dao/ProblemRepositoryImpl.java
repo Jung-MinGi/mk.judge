@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RequiredArgsConstructor
 @Repository
@@ -27,6 +28,11 @@ public class ProblemRepositoryImpl implements ProblemRepository{
         return mapper.getProblem(li);
     }
 
+    @Override
+    public ArrayList<Problem> findByTitle(String title) {
+        return null;
+    }
+
 
     @Override
     public ArrayList<Level> getLevel() {
@@ -36,5 +42,20 @@ public class ProblemRepositoryImpl implements ProblemRepository{
     @Override
     public int getCount(OptionAndPage li) {
         return mapper.getCount(li);
+    }
+
+    @Override
+    public ArrayList<Solved> getSolvedAndCategory(String username) {
+        return mapper.getSolvedAndCategory(username);
+    }
+
+    @Override
+    public void delete(int id) {
+        mapper.delete(id);
+    }
+
+    @Override
+    public ArrayList<Problem> solvedProblems(String username) {
+        return mapper.solvedProblems(username);
     }
 }

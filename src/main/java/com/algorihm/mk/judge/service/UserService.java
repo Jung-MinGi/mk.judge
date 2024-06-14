@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public interface UserService {
     void join(LoginDto loginDto) throws JsonProcessingException;
     ArrayList<User> getAllUser();
+    User findByUsername(String username);
 
     boolean doubleCheck(String username);
 }

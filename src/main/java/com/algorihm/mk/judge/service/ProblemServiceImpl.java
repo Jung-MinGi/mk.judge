@@ -4,6 +4,7 @@ import com.algorihm.mk.judge.dao.ProblemRepository;
 import com.algorihm.mk.judge.domain.Level;
 import com.algorihm.mk.judge.domain.OptionAndPage;
 import com.algorihm.mk.judge.domain.Problem;
+import com.algorihm.mk.judge.domain.Solved;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
-public class ProblemServiceImpl implements ProblemService{
+public class ProblemServiceImpl implements ProblemService {
     private final ProblemRepository repository;
 
 
@@ -22,7 +23,7 @@ public class ProblemServiceImpl implements ProblemService{
 
     @Override
     public ArrayList<Problem> getProblem(OptionAndPage li) {
-//여기서 만약 로그인 한 상태면 문제 성ㅇ공여부 조회해서 같이 넘겨야됨
+//여기서 만약 로그인 한 상태면 문제 성공여부 조회해서 같이 넘겨야됨
         return repository.getProblem(li);
     }
 
@@ -40,5 +41,15 @@ public class ProblemServiceImpl implements ProblemService{
     @Override
     public int getCount(OptionAndPage li) {
         return repository.getCount(li);
+    }
+
+    @Override
+    public ArrayList<Solved> getSolvedAndCategory(String username) {
+        return repository.getSolvedAndCategory(username);
+    }
+
+    @Override
+    public ArrayList<Problem> solvedProblems(String username) {
+        return repository.solvedProblems(username);
     }
 }

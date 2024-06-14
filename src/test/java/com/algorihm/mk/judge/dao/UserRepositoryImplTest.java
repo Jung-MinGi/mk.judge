@@ -30,6 +30,7 @@ class UserRepositoryImplTest {
         user.setUsername("aaaa");
         user.setPassword("1212");
         user.setLevel(Level.GOLD);
+        user.setRole("ROLE_ADMIN");
         userRepository.join(user);
 
         ArrayList<User> ret = userRepository.getAllUser();
@@ -43,6 +44,8 @@ class UserRepositoryImplTest {
         user.setUsername("aaaa");
         user.setPassword("1212");
         user.setLevel(Level.GOLD);
+        user.setRole("ROLE_ADMIN");
+
         userRepository.join(user);
 
         ArrayList<User> ret = userRepository.getAllUser();
@@ -64,9 +67,11 @@ class UserRepositoryImplTest {
         user.setUsername("jung");
         user.setPassword("1234");
         user.setLevel(Level.BRONZE);
+        user.setRole("ROLE_ADMIN");
+
         userRepository.join(user);
 
-        User jung = userRepository.getUserByUsername("jung");
+        User jung = userRepository.findByUsername("jung");
         userCompare(user, jung);
     }
 

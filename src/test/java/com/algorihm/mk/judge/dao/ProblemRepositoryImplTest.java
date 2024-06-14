@@ -1,8 +1,6 @@
 package com.algorihm.mk.judge.dao;
 
-import com.algorihm.mk.judge.domain.Category;
-import com.algorihm.mk.judge.domain.Level;
-import com.algorihm.mk.judge.domain.Problem;
+import com.algorihm.mk.judge.domain.*;
 import com.algorihm.mk.judge.mybatis.mapper.ProblemMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,32 +17,53 @@ class ProblemRepositoryImplTest {
     private ProblemMapper mapper;
 
     private ProblemRepository repository;
-    private ArrayList<Problem> list;
 
     @BeforeEach
     void init() {
         repository = new ProblemRepositoryImpl(mapper);
-
-        repository.registerProb(new Problem(1, "test1", "testContent1", "testAnswer1", Category.MATH,Level.SILVER));
-        repository.registerProb(new Problem(2, "test2", "testContent2", "testAnswer2", Category.MATH,Level.SILVER));
-        repository.registerProb(new Problem(3, "test3", "testContent3", "testAnswer3", Category.MATH,Level.SILVER));
-        repository.registerProb(new Problem(4, "test4", "testContent4", "testAnswer4", Category.MATH,Level.SILVER));
-        repository.registerProb(new Problem(5, "test5", "testContent5", "testAnswer5", Category.MATH,Level.SILVER));
-
-        list = new ArrayList<>();
-        list.add(new Problem(1, "test1", "testContent1", "testAnswer1", Category.MATH, Level.SILVER));
-        list.add(new Problem(2, "test2", "testContent2", "testAnswer2", Category.MATH, Level.SILVER));
-        list.add(new Problem(3, "test3", "testContent3", "testAnswer3", Category.MATH, Level.SILVER));
-        list.add(new Problem(4, "test4", "testContent4", "testAnswer4", Category.MATH, Level.SILVER));
-        list.add(new Problem(5, "test5", "testContent5", "testAnswer5", Category.MATH, Level.SILVER));
-
     }
 
     @Test
     @DisplayName("findById")
+    public void test1() {
+        check(new Problem(1, "test1", "testContent1", "testAnswer1", Category.MATH, Level.SILVER,false), repository.findById(1));
+    }
+
+    @Test
+    @DisplayName("getSolvedAndCategory")
     public void test2() {
-        for (Problem problem : list) {
-            check(problem, repository.findById(problem.getId()));
+        ArrayList<Solved> root = repository.getSolvedAndCategory("root");
+        for (Solved solved : root) {
+            Assertions.assertThat(solved.getCategory()).isInstanceOf(Category.class);
+            Assertions.assertThat(solved.getCnt()).isInstanceOf(Integer.class);
+        }
+    }
+    @Test
+    @DisplayName("delete")
+    public void test3() {
+        repository.delete(1);
+        Problem ret = repository.findById(1);
+        Assertions.assertThat(ret.getRemoved()).isTrue();
+    }
+    @Test
+    @DisplayName("getProblem")
+    public void test4() {
+        repository.delete(1);
+        repository.delete(3);
+        OptionAndPage optionAndPage = new OptionAndPage();
+        optionAndPage.setPage(1);
+        ArrayList<Problem> problem = repository.getProblem(optionAndPage);
+        for (Problem x : problem) {
+            Assertions.assertThat(x.getRemoved()).isFalse();
+        }
+    }
+    @Test
+    @DisplayName("solvedProblems(String username)")
+    public void test5() {
+        ArrayList<Problem> root = repository.solvedProblems("root");
+        for (Problem problem : root) {
+            Assertions.assertThat(problem.getRemoved()).isFalse();
+
         }
     }
 
