@@ -7,6 +7,7 @@ import com.algorihm.mk.judge.domain.Solved;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public interface ProblemRepository{
         void registerProb(Problem problem);
@@ -19,4 +20,6 @@ public interface ProblemRepository{
         ArrayList<Solved> getSolvedAndCategory(String username);
         void delete(int id);
         ArrayList<Problem> solvedProblems(String username);
+
+        ArrayList<Map<String,Object>> getRank();
 }

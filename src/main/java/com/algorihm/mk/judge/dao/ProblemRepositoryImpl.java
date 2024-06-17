@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Repository
@@ -57,5 +58,10 @@ public class ProblemRepositoryImpl implements ProblemRepository{
     @Override
     public ArrayList<Problem> solvedProblems(String username) {
         return mapper.solvedProblems(username);
+    }
+
+    @Override
+    public ArrayList<Map<String,Object>> getRank() {
+        return mapper.getRank();
     }
 }

@@ -14,10 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
     private final ProblemService service;
+
 
     @ModelAttribute
     public static void loginUsernameAddModel(Model model) {
@@ -38,7 +41,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-
+        System.out.println("HomeController.home");
         return "index";
     }
 
@@ -56,6 +59,7 @@ public class HomeController {
 
     @GetMapping("/prob_list")
     public String prob(Model model) {
+        System.out.println("HomeController.prob");
         return "prob_list";
     }
 
@@ -68,12 +72,12 @@ public class HomeController {
 
     @GetMapping("/myPage")
     public String myPage(Model model) {
+        System.out.println("HomeController.myPage");
         return "myPage";
     }
 
     @GetMapping("/ex")
     public void jsonError() {
-        throw new RuntimeException();
+        throw new RuntimeException("오늘 스쿼트 조진다.");
     }
-
 }

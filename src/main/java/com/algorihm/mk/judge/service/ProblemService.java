@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public interface ProblemService {
@@ -18,5 +19,6 @@ public interface ProblemService {
     int getCount(OptionAndPage li);
     ArrayList<Solved> getSolvedAndCategory(String username);
     ArrayList<Problem> solvedProblems(String username);
+    int getRank(String username);
 
 }

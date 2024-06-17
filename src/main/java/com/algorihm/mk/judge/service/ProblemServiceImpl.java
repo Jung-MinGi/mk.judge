@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +52,24 @@ public class ProblemServiceImpl implements ProblemService {
     @Override
     public ArrayList<Problem> solvedProblems(String username) {
         return repository.solvedProblems(username);
+    }
+
+    @Override
+    public int getRank(String username) {
+        ArrayList<Map<String, Object>> rank = repository.getRank();
+        int answer=1;
+        for (int i = 0; i < rank.size(); i++) {
+            String s = (String) rank.get(i).get("username");
+            if (s.equals(username)) {
+                long r = (long) rank.get(i).get("c");
+                if(i==0)break;
+                for (int j = i-1; j >=0 ; j--) {
+                    if(r!=(long) rank.get(j).get("c"))break;
+                    else answer--;
+                }
+                break;
+            }else answer++;
+        }
+        return answer;
     }
 }

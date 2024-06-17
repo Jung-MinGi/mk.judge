@@ -2,6 +2,7 @@ package com.algorihm.mk.judge.jwt;
 
 import com.algorihm.mk.judge.domain.CustomUserDetails;
 import com.algorihm.mk.judge.domain.User;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -39,6 +42,7 @@ public class JwtFilter extends OncePerRequestFilter {
         user.setPassword("1111");
         user.setRole(role);
         System.out.println("현재 접속 유저 정보 = " + user);
+        System.out.println("token = " + token);
         CustomUserDetails customUserDetails = new CustomUserDetails(user);
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
 

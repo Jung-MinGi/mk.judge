@@ -54,5 +54,9 @@
     </delete>
 
     <select id="solvedProblems" resultType="Problem">
-        select * from problems p join solved s on p.id = s.id where p.removed=false and s.username=#{username};    </select>
+        select * from problems p join solved s on p.id = s.id where p.removed=false and s.username=#{username};
+    </select>
+    <select id="getRank" resultType="HashMap">
+        select count(*) c ,username from solved group by username order by c desc;
+    </select>
 </mapper>

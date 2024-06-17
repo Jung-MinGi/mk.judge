@@ -9,28 +9,22 @@ function redirectWithToken(){
         if(res.ok){
 
         return res.json();
-        }else throw new Error();
+        }
     }).then(function(data){
         console.log(data);
         document.getElementById("username").innerText =data.user.username;
         createChart(data.labels,data.solved,data.backGroundColor);
         createSolvedProblemsList(data.solvedProblems);
+        createSolvedProblemAndRank(data.solved,data.rank);
    if (data.user.level === "BRONZE") {
-         document.getElementById("rank").innerText = "🥉";
+         document.getElementById("level").innerText = "🥉";
      } else if (data.user.level === "SILVER") {
-         document.getElementById("rank").innerText = "🥈";
+         document.getElementById("level").innerText = "🥈";
      } else {
-         document.getElementById("rank").innerText = "🥇";
+         document.getElementById("level").innerText = "🥇";
      }
-    }).catch(error=>{
-      alert("로그인 후 이용 가능 합니다");
-      window.location.href="/login";
     })
-
 }
-
-redirectWithToken();
-
 
 
 
@@ -52,15 +46,16 @@ const config = {
 
 const chart = new Chart(document.getElementById('doughnut'),
     config
-)}
+)
+}
 
 
 function createSolvedProblemsList(list){
     var tag="";
     for(var k=1;k<=list.length;k++){
-        tag+='<li>Problem '+k+' - <a href="#">'+list[k-1].title+'</a></li>';
+        tag+='<li>Problem '+k+' - <a href="/problem/detail/'+list[k-1].id+'">'+list[k-1].title+'</a></li>';
     }
-    document.getElementsByClassName("problem-list")[0].innerHTML = tag; // [0] 추가
+    document.getElementsByClassName("problem-list")[0].innerHTML = tag;
 
 }
 
@@ -87,6 +82,9 @@ function changeTag() {
                 element.id = "logout";
                 element.textContent = '로그아웃';
                 element.onclick = logout();
+            }else{
+                alert("로그인 후 이용해주세요.");
+                window.location.href="/login";
             }
         })
     }
@@ -123,4 +121,18 @@ function logout() {
     })
 }
 
+
+
+//solvedProblems개수 채우기
+function createSolvedProblemAndRank(li,a){
+    var cnt=0;
+    for(var k=0;k<li.length-1;k++){
+        cnt+=Number(li[k]);
+    }
+    document.getElementById("cnt").innerHTML=cnt;
+    document.getElementById("rank").innerHTML=a;
+}
+
+
+redirectWithToken();
 changeTag();

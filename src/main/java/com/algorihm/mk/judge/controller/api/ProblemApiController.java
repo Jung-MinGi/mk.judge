@@ -7,6 +7,7 @@ import com.algorihm.mk.judge.service.ProblemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -36,7 +37,16 @@ public class ProblemApiController {
     @PutMapping("/problem/page")
     public int getCount(@RequestBody OptionAndPage li) {
         int ret = service.getCount(li);
-        System.out.println("ret = " + ret);
         return ret;
     }
+
+    @GetMapping("/problem/solved")
+    public ArrayList<Integer> getProbSolved() {
+        ArrayList<Problem> problems = service.solvedProblems(SecurityContextHolder.getContext().getAuthentication().getName());
+        ArrayList<Integer> list = new ArrayList<>();
+        for (Problem problem : problems) {
+            list.add(problem.getId());
+        }
+        return list;
+        }
 }

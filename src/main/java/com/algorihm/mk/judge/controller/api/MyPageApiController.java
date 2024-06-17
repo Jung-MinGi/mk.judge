@@ -3,13 +3,9 @@ package com.algorihm.mk.judge.controller.api;
 import com.algorihm.mk.judge.domain.*;
 import com.algorihm.mk.judge.service.ProblemService;
 import com.algorihm.mk.judge.service.UserService;
-import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -21,12 +17,7 @@ public class MyPageApiController {
     private final UserService userService;
     private final ProblemService problemService;
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String exHandler(ExpiredJwtException e) {
-        System.out.println("MyPageApiController.exHandler");
-        return "zzzzzz";
-    }
+
 
     @GetMapping("/api/myPage")
     public MyPageDto myPage() {
@@ -54,11 +45,11 @@ public class MyPageApiController {
         makeColor(labels.size() - 1, backGroundColor);
         backGroundColor.add("rgb(192, 192, 192)");
         myPageDto.setBackGroundColor(backGroundColor);
+        myPageDto.setRank(problemService.getRank(user.getUsername()));
         return myPageDto;
     }
 
     private void makeColor(int len, ArrayList<String> list) {
-
         Random random = new Random();
 
         for (int i = 0; i < len; i++) {

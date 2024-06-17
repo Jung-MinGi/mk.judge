@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 @Mapper
 public interface ProblemMapper {
@@ -23,5 +24,6 @@ public interface ProblemMapper {
     ArrayList<Solved> getSolvedAndCategory(String username);
     ArrayList<Problem> findByTitle(String title);
     void delete(int id);
+    ArrayList<Map<String,Object>> getRank();
 
 }

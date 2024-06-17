@@ -39,7 +39,8 @@ function init(sort,page) {
             tag += '<tr style="height:30px;">';
             tag += '<td style="text-align: center;">' + data[k].id + '</td>';
             tag += '<td><a href=/problem/detail/' + data[k].id + '>' + data[k].title + '</a></td>';
-            tag += '<td>' + data[k].content + '</td>';
+//            tag += '<td>' + data[k].content + '</td>';
+            tag += '<td><span class="successProb" id="'+data[k].id+'"></span></td>';
             tag += '<td>' + data[k].level + '</td>';
             tag += '</tr>';
         }
@@ -55,6 +56,7 @@ function init(sort,page) {
     }).then(function () {
         createOption();
         createPageBar(sort,page);//todo
+        checkSolvedProblem();
     });
 }
 
@@ -161,4 +163,35 @@ function toInt (value) {
      			return parseInt(value, 10);
      		}
      	}
+
+function checkSolvedProblem(){
+     fetch("/problem/solved", {
+             method: 'get',
+             headers: {
+                 'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                 'Content-Type': 'application/json'
+             }
+         }).then(function(res){
+            if(res.ok){
+                return res.json();
+            }else{
+                console.log("로그인 안 된 상태");
+
+            }
+         }).then(function(data){
+        for (var k in data) {
+            var x = document.getElementById(data[k]);
+            if (x) {
+                x.innerHTML = "성공";
+                x.style.backgroundColor = "#5cb85c";
+                x.style.color = "white";
+                x.style.padding = "5px";
+                x.style.borderRadius = "3px";
+                x.style.fontWeight = "bold";
+                x.marginLeft="5px";
+
+            }
+        }
+         })
+}
 init();

@@ -19,6 +19,8 @@ function changeTag() {
                 element.id = "logout";
                 element.textContent = '로그아웃';
                 element.onclick = logout();
+            }else{
+                console.log(res);
             }
         })
     }

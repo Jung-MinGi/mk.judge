@@ -11,5 +11,6 @@ public class MyPageDto {
     private ArrayList<String> solved;
     private ArrayList<String> backGroundColor;
     private ArrayList<Problem> solvedProblems;
+    private int rank;
 
 }
