@@ -91,7 +91,20 @@ class ProblemRepositoryImplTest {
         }
         Assertions.assertThat(answer).isEqualTo(1);
     }
+    @Test
+    @DisplayName("sovledCheck")
+    public void test7() {
+        SolvedCheck solvedCheck = new SolvedCheck();
+        solvedCheck.setUsername("root");
+        solvedCheck.setId("2");
+        SolvedCheck ret = repository.solvedCheck(solvedCheck);
+        Assertions.assertThat(ret).isNotNull();
 
+        solvedCheck.setId("100");
+        ret = repository.solvedCheck(solvedCheck);
+        Assertions.assertThat(ret).isNull();
+//        System.out.println(ret);
+    }
     private void check(Problem problem, Problem expected) {
         Assertions.assertThat(problem.getId()).isEqualTo(expected.getId());
         Assertions.assertThat(problem.getTitle()).isEqualTo(expected.getTitle());

@@ -1,9 +1,6 @@
 package com.algorihm.mk.judge.dao;
 
-import com.algorihm.mk.judge.domain.Level;
-import com.algorihm.mk.judge.domain.OptionAndPage;
-import com.algorihm.mk.judge.domain.Problem;
-import com.algorihm.mk.judge.domain.Solved;
+import com.algorihm.mk.judge.domain.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,4 +19,7 @@ public interface ProblemRepository{
         ArrayList<Problem> solvedProblems(String username);
 
         ArrayList<Map<String,Object>> getRank();
+        SolvedCheck solvedCheck(SolvedCheck solvedCheck);
+        void updateSolved(SolvedCheck solvedCheck);
+
 }

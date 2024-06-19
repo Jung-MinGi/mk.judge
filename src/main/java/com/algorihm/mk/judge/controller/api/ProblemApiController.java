@@ -5,12 +5,11 @@ import com.algorihm.mk.judge.domain.OptionAndPage;
 import com.algorihm.mk.judge.domain.Problem;
 import com.algorihm.mk.judge.service.ProblemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RequiredArgsConstructor
 @RestController
@@ -48,5 +47,10 @@ public class ProblemApiController {
             list.add(problem.getId());
         }
         return list;
-        }
+    }
+
+    @PutMapping("/problem/submit")
+    public boolean submit(@RequestBody HashMap<String, String> map) {
+        return service.checkAnswer(map.get("id"), map.get("answer"));
+    }
 }

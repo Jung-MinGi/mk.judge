@@ -35,7 +35,7 @@ public class HomeController {
         model.addAttribute("id", ret.getId());
         model.addAttribute("title", ret.getTitle());
         model.addAttribute("content", ret.getContent());
-        model.addAttribute("grade", ret.getLevel());
+        model.addAttribute("level", ret.getLevel());
         return "prob_detail";
     }
 
@@ -63,12 +63,12 @@ public class HomeController {
         return "prob_list";
     }
 
-    @GetMapping("/manager")
-    @ResponseBody
-    public String manager(Model model) {
-        System.out.println("HomeController.manager");
-        return "manager";
-    }
+//    @GetMapping("/manager")
+//    @ResponseBody
+//    public String manager(Model model) {
+//        System.out.println("HomeController.manager");
+//        return "manager";
+//    }
 
     @GetMapping("/myPage")
     public String myPage(Model model) {

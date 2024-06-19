@@ -1,11 +1,9 @@
 package com.algorihm.mk.judge.service;
 
 import com.algorihm.mk.judge.dao.ProblemRepository;
-import com.algorihm.mk.judge.domain.Level;
-import com.algorihm.mk.judge.domain.OptionAndPage;
-import com.algorihm.mk.judge.domain.Problem;
-import com.algorihm.mk.judge.domain.Solved;
+import com.algorihm.mk.judge.domain.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -71,5 +69,20 @@ public class ProblemServiceImpl implements ProblemService {
             }else answer++;
         }
         return answer;
+    }
+
+    @Override
+    public boolean checkAnswer(String id, String answer) {
+        Problem problem = repository.findById(Integer.parseInt(id));
+        if(problem.getAnswer().equals(answer)){
+            SolvedCheck solvedCheck = new SolvedCheck();
+            solvedCheck.setUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+            solvedCheck.setId(id);
+            if(repository.solvedCheck(new SolvedCheck())==null){
+                repository.updateSolved(solvedCheck);
+            }
+            return true;
+        }
+        return false;
     }
 }

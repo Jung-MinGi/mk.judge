@@ -32,10 +32,9 @@ public class CheckIsExpiredJwtFilter extends OncePerRequestFilter {
                 response.setContentType("text/plain");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write("토큰 정상.");
-
             }
         } catch (ExpiredJwtException e) {
-            response.sendError(400);
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
 
     }

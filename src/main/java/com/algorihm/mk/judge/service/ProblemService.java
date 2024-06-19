@@ -13,12 +13,20 @@ import java.util.Map;
 
 public interface ProblemService {
     void registerProb(Problem problem);
+
     ArrayList<Problem> getProblem(OptionAndPage li);
+
     Problem findById(int id);
+
     ArrayList<Level> getLevel();
+
     int getCount(OptionAndPage li);
+
     ArrayList<Solved> getSolvedAndCategory(String username);
+
     ArrayList<Problem> solvedProblems(String username);
+
     int getRank(String username);
 
+    boolean checkAnswer(String id, String answer);
 }

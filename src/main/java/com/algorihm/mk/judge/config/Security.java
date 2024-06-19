@@ -79,6 +79,7 @@ public class Security {
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
+
         return http.build();
     }
 

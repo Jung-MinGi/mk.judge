@@ -59,4 +59,11 @@
     <select id="getRank" resultType="HashMap">
         select count(*) c ,username from solved group by username order by c desc;
     </select>
+    <select id="solvedCheck" resultType="SolvedCheck">
+        select username,id from solved where username=#{username} and id = #{id};
+    </select>
+    <insert id="updateSolved">
+        insert into solved(username,id) values(#{username},#{id});
+
+    </insert>
 </mapper>

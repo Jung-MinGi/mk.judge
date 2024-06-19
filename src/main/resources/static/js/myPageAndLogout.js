@@ -1,3 +1,4 @@
+
 function changeTag() {
     if (localStorage.getItem('token') != null) {
         fetch("/isExpired", {
@@ -26,6 +27,16 @@ function changeTag() {
     }
 }
 
+
+
+function logout() {
+    document.getElementById("logout").addEventListener('click', function (event) {
+        event.preventDefault();
+        localStorage.removeItem('token');
+        window.location.href = "/";
+    })
+}
+
 function myPage() {
     document.getElementById("myPage").addEventListener('click', function (event) {
         event.preventDefault();
@@ -48,13 +59,5 @@ function myPage() {
     })
 }
 
-
-function logout() {
-    document.getElementById("logout").addEventListener('click', function (event) {
-        event.preventDefault();
-        localStorage.removeItem('token');
-        window.location.href = "/";
-    })
-}
 
 changeTag();

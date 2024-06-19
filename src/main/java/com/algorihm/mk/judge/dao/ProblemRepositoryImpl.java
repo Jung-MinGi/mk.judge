@@ -64,4 +64,14 @@ public class ProblemRepositoryImpl implements ProblemRepository{
     public ArrayList<Map<String,Object>> getRank() {
         return mapper.getRank();
     }
+
+    @Override
+    public SolvedCheck solvedCheck(SolvedCheck solvedCheck) {
+        return mapper.solvedCheck(solvedCheck);
+    }
+
+    @Override
+    public void updateSolved(SolvedCheck solvedCheck) {
+        mapper.updateSolved(solvedCheck);
+    }
 }
