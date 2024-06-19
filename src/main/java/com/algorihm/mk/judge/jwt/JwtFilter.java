@@ -28,26 +28,56 @@ public class JwtFilter extends OncePerRequestFilter {
             return;
         }
         String token = authorization.split(" ")[1];
-//        if (jwtUtils.isExpired(token)) {
-//            System.out.println("token isExpired");
-//            filterChain.doFilter(request, response);
-//            return;
-//        }
+        try {
+            jwtUtils.isExpired(token);
+            String requestURI = request.getRequestURI();
+            System.out.println("requestURI = " + requestURI);
+            if (!requestURI.equals("/isExpired")) {
+                //
+                String username = jwtUtils.getUsername(token);
+                String role = jwtUtils.getRole(token);
 
-        String username = jwtUtils.getUsername(token);
-        String role = jwtUtils.getRole(token);
+                User user = new User();
+                user.setUsername(username);
+                user.setPassword("1111");
+                user.setRole(role);
+                System.out.println("현재 접속 유저 정보 = " + user);
+                System.out.println("token = " + token);
+                CustomUserDetails customUserDetails = new CustomUserDetails(user);
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
 
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword("1111");
-        user.setRole(role);
-        System.out.println("현재 접속 유저 정보 = " + user);
-        System.out.println("token = " + token);
-        CustomUserDetails customUserDetails = new CustomUserDetails(user);
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                filterChain.doFilter(request, response);
+                //
+//                System.out.println("SecurityContextHolder.getContext().getAuthentication().getName() = " + SecurityContextHolder.getContext().getAuthentication().getName());
+//                filterChain.doFilter(request, response);
+            }else {
+                response.setStatus(200);
+                response.setContentType("text/plain");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("토큰 정상.");
+                return;
+            }
+        }catch (ExpiredJwtException e){
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 
-        filterChain.doFilter(request, response);
+        }
+
+//        String username = jwtUtils.getUsername(token);
+//        String role = jwtUtils.getRole(token);
+//
+//        User user = new User();
+//        user.setUsername(username);
+//        user.setPassword("1111");
+//        user.setRole(role);
+//        System.out.println("현재 접속 유저 정보 = " + user);
+//        System.out.println("token = " + token);
+//        CustomUserDetails customUserDetails = new CustomUserDetails(user);
+//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
+//
+//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+//
+//        filterChain.doFilter(request, response);
     }
 }

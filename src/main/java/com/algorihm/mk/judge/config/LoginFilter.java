@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.util.StreamUtils;
 
@@ -39,7 +40,6 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         }
         String username = loginDto.getUsername();
         String password = loginDto.getPassword();
-
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password, null);
 
         return authenticationManager.authenticate(authToken);
@@ -61,13 +61,15 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         System.out.println("로그인 성공");
         System.out.println("username = " + username);
         System.out.println("role = " + role);
-//        String jwt = jwtUtils.createJwt(username, role, 7 * 24 * 60 * 60 * 1000L);//일주일
-        String jwt = jwtUtils.createJwt(username, role, 10 * 1000L);//10초
+        String jwt = jwtUtils.createJwt(username, role, 7 * 24 * 60 * 60 * 1000L);//일주일
+//        String jwt = jwtUtils.createJwt(username, role, 10 * 1000L);//10초
 //        String jwt = jwtUtils.createJwt(username, role, 3600000L);//1시간
 
         response.setContentType("application/json");
         response.setCharacterEncoding("utf-8");
         response.getWriter().write("{\"token\": \"" + jwt + "\"}");
+//        System.out.println("SecurityContextHolder.getContext().getAuthentication().getName() = " + SecurityContextHolder.getContext().getAuthentication().getName());
+
     }
 
     @Override

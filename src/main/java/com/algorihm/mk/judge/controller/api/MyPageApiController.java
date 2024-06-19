@@ -46,6 +46,7 @@ public class MyPageApiController {
         backGroundColor.add("rgb(192, 192, 192)");
         myPageDto.setBackGroundColor(backGroundColor);
         myPageDto.setRank(problemService.getRank(user.getUsername()));
+        System.out.println(myPageDto);
         return myPageDto;
     }
 

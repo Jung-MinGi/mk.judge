@@ -62,7 +62,7 @@ class ProblemRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("solvedProblems(String username)")
+    @DisplayName("solvedProblems()")
     public void test5() {
         ArrayList<Problem> root = repository.solvedProblems("root");
         for (Problem problem : root) {

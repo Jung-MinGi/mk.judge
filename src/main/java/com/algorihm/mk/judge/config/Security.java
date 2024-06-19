@@ -27,21 +27,7 @@ public class Security {
 
     private final ObjectMapper objectMapper;
 
-    //    @Bean//세션기반
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/prob_list").authenticated()
-//                        .requestMatchers("/css/**","/js/**","/images/**").permitAll()
-//                        .anyRequest().permitAll());
-//
-//
-//        http.formLogin(formLogin -> formLogin
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-//                .defaultSuccessUrl("/").permitAll());
-//        return http.build();
-//    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -60,17 +46,14 @@ public class Security {
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
-//                        .requestMatchers("/login", "/", "/join").permitAll()
-//                        .requestMatchers("/prob_list").hasRole("ADMIN")
                         .requestMatchers("/manager").hasRole("ADMIN")
-//                        .requestMatchers("/prob_list").authenticated()
                         .anyRequest().permitAll());
 
         http
                 .addFilterBefore(new JwtFilter(jwtUtils), LoginFilter.class);
 
-        http
-                .addFilterBefore(new CheckIsExpiredJwtFilter(jwtUtils), JwtFilter.class);
+//        http
+//                .addFilterBefore(new CheckIsExpiredJwtFilter(jwtUtils), JwtFilter.class);
 
         http
                 .addFilterAfter(new LoginFilter(authenticationManager(configuration), jwtUtils, objectMapper), UsernamePasswordAuthenticationFilter.class);
