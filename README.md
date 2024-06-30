@@ -8,7 +8,7 @@
   - SpringSecurity JWT
  
 - 이슈
-  - SpringSecurity 무한 리디렉션  
+  - [SpringSecurity 무한 리디렉션](https://github.com/Jung-MinGi/mk.judge/blob/master/springsecurity%20redirection.md)  
 <h2>이미지</h2>
 
 - 로그인 페이지(소셜 로그인 기능 추가 중)
