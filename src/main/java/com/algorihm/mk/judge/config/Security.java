@@ -1,6 +1,5 @@
 package com.algorihm.mk.judge.config;
 
-import com.algorihm.mk.judge.jwt.CheckIsExpiredJwtFilter;
 import com.algorihm.mk.judge.jwt.JwtFilter;
 import com.algorihm.mk.judge.jwt.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,7 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -42,6 +40,7 @@ public class Security {
         //http basic 인증 방식 disable
         http
                 .httpBasic(AbstractHttpConfigurer::disable);
+
 
         //경로별 인가 작업
         http

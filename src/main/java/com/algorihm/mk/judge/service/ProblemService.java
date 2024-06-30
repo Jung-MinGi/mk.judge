@@ -27,6 +27,6 @@ public interface ProblemService {
     ArrayList<Problem> solvedProblems(String username);
 
     int getRank(String username);
-
+    void delete(int id);
     boolean checkAnswer(String id, String answer);
 }

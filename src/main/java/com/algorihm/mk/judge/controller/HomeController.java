@@ -63,12 +63,10 @@ public class HomeController {
         return "prob_list";
     }
 
-//    @GetMapping("/manager")
-//    @ResponseBody
-//    public String manager(Model model) {
-//        System.out.println("HomeController.manager");
-//        return "manager";
-//    }
+    @GetMapping("/update")
+    public String manager(Model model) {
+        return "manager/update";
+    }
 
     @GetMapping("/myPage")
     public String myPage(Model model) {

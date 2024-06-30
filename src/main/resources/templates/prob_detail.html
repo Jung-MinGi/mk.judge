@@ -95,14 +95,22 @@
             alert("수정 버튼 클릭됨");
         });
         document.getElementById("deleteBtn").addEventListener("click", function() {
-            alert("삭제 버튼 클릭됨");
+            deleteProb();
         });
 
     }).catch(error => {
 
     });
 
-
+async function deleteProb(){
+    const res = await fetch("/manager/"+document.getElementById("id").innerHTML, {
+        method: 'delete',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem("token"),
+            'Content-Type': 'application/json'
+        }
+    })
+};
 </script>
 </body>
 </html>

@@ -72,6 +72,11 @@ public class ProblemServiceImpl implements ProblemService {
     }
 
     @Override
+    public void delete(int id) {
+        repository.delete(id);
+    }
+
+    @Override
     public boolean checkAnswer(String id, String answer) {
         Problem problem = repository.findById(Integer.parseInt(id));
         if(problem.getAnswer().equals(answer)){

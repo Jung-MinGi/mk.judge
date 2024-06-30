@@ -33,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
             String requestURI = request.getRequestURI();
             System.out.println("requestURI = " + requestURI);
             if (!requestURI.equals("/isExpired")) {
-                //
+                
                 String username = jwtUtils.getUsername(token);
                 String role = jwtUtils.getRole(token);
 
@@ -57,27 +57,11 @@ public class JwtFilter extends OncePerRequestFilter {
                 response.setContentType("text/plain");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write("토큰 정상.");
-                return;
+                
             }
         }catch (ExpiredJwtException e){
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 
         }
-
-//        String username = jwtUtils.getUsername(token);
-//        String role = jwtUtils.getRole(token);
-//
-//        User user = new User();
-//        user.setUsername(username);
-//        user.setPassword("1111");
-//        user.setRole(role);
-//        System.out.println("현재 접속 유저 정보 = " + user);
-//        System.out.println("token = " + token);
-//        CustomUserDetails customUserDetails = new CustomUserDetails(user);
-//        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(customUserDetails, null, customUserDetails.getAuthorities());
-//
-//        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-//
-//        filterChain.doFilter(request, response);
     }
 }

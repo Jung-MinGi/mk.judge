@@ -30,5 +30,4 @@ public interface ProblemMapper {
 
     ArrayList<Map<String, Object>> getRank();
     SolvedCheck solvedCheck(SolvedCheck solvedCheck);
-
 }

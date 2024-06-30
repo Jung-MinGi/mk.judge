@@ -6,10 +6,7 @@ import com.algorihm.mk.judge.service.ProblemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -31,5 +28,9 @@ public class ManagerApiController {
     @PutMapping("/manager/update")
     public void update(@RequestBody UpdateDto updateDto){
         System.out.println("글 수정: "+updateDto);
+    }
+    @DeleteMapping("/manager/{id}")
+    public void delete(@PathVariable int id){
+        service.delete(id);
     }
 }
