@@ -16,7 +16,7 @@ import java.net.URL;
 @Slf4j
 public class ThreadLocalController {
   
-    private final ThreadLocal<ConcurrentBean> threadLocal;//공유될 객체를 ThreadLocal로 감쌈
+    private final ThreadLocal<ConcurrentBean> threadLocal;//멀티스레딩 환경에서 공유될 객체를 ThreadLocal로 감쌈
   
     @GetMapping("/threadLocal/{value}/{name}")
     public void tl(@PathVariable String value,@PathVariable String name) throws InterruptedException {
@@ -26,12 +26,13 @@ public class ThreadLocalController {
             threadLocal.set(concurrentBean);
         }
         log.info(name+"번째 스레드 스레드로컬에 넣을 값 : {}", value);
-
+        // 스레드 내에서 공유할 데이터를 설정
         concurrentBean.setS(value);
 
-        threadLocal.remove();
         //시간차를 주어야 공유객체에 여러스레드가 동시에 접근함
         Thread.sleep(2000);
+      
+       // 스레드 내에서 데이터에 접근
         log.info(name+"번째 스레드 스레드로컬 값 : {}", concurrentBean.getS());
 
     }
