@@ -36,6 +36,7 @@ public class ThreadLocalController {
 
     }
 
+  //5개의 스레드 생성후 실행 
     @GetMapping("/thread")
     public void createThread() {
         for (int i = 0; i < 5; i++) {
