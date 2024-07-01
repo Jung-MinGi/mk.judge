@@ -11,8 +11,8 @@
   - [SpringSecurity 무한 리디렉션](https://github.com/Jung-MinGi/mk.judge/blob/master/springsecurity%20redirection.md)
 
 
-- 구현 중 배운 개념 정리
-  - 동시성 문제
+- 구현 중 배운 개념 
+  - [Atomic 클래스와 ThreadLocal의 차이](https://github.com/Jung-MinGi/mk.judge/blob/master/Atomic%26ThreadLocal.md)
       
 <h2>이미지</h2>
 
