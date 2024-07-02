@@ -1,4 +1,4 @@
-```
+
 객체에 원자성을 부여하지 않은 상태에서 결과값
 2024-07-02T13:47:24.432+09:00  INFO 9896 --- [demo] [io-8080-exec-29] com.oauthtest.demo.AtomicController      : 14번 째 스레드 +1 값: 26
 2024-07-02T13:47:24.432+09:00  INFO 9896 --- [demo] [io-8080-exec-27] com.oauthtest.demo.AtomicController      : 17번 째 스레드 +1 값: 27
@@ -32,4 +32,4 @@
 2024-07-02T13:47:24.431+09:00  INFO 9896 --- [demo] [io-8080-exec-26] com.oauthtest.demo.AtomicController      : 6번 째 스레드 +1 값: 23
 
 스레드 30개가 공유객체의 필드값을 증감시켰으므로 결과값이 30이 되어야하지만 동시성문제 발생
-```
+
