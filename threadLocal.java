@@ -16,7 +16,7 @@ import java.net.URL;
 @Slf4j
 public class ThreadLocalController {
   
-    private final ThreadLocal<ConcurrentBean> threadLocal;//멀티스레딩 환경에서 공유될 객체를 ThreadLocal로 감쌈
+    private final ThreadLocal<ConcurrentBean> threadLocal;//멀티스레딩 환경에서 공유될 객체(ConcurrentBean)를 ThreadLocal로 감쌈
   
     @GetMapping("/threadLocal/{value}/{name}")
     public void tl(@PathVariable String value,@PathVariable String name) throws InterruptedException {
