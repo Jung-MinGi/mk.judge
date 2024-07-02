@@ -13,8 +13,8 @@
 
 - 구현 중 배운 개념
   - 멀티쓰레드 동시성 문제
-    - [ThreadLocal 사용](https://github.com/Jung-MinGi/mk.judge/blob/master/threadLocal.java)
-    - [Volatile 사용](https://github.com/Jung-MinGi/mk.judge/blob/master/Volatile.java)
+    - [ThreadLocal](https://github.com/Jung-MinGi/mk.judge/blob/master/threadLocal.java)
+    - [Volatile](https://github.com/Jung-MinGi/mk.judge/blob/master/Volatile.java)
       
 <h2>이미지</h2>
 
