@@ -5,7 +5,7 @@
   - SpringBoot
   - MySql
   - Thymeleaf
-  - SpringSecurity JWT
+  - SpringSecurity JWT, oatuh2
  
 - 이슈
   - [SpringSecurity 무한 리디렉션](https://github.com/Jung-MinGi/mk.judge/blob/master/springsecurity%20redirection.md)
@@ -19,9 +19,9 @@
       
 <h2>이미지</h2>
 
-- 로그인 페이지(소셜 로그인 기능 추가 중)
-  - ![image](https://github.com/Jung-MinGi/mk.judge/assets/118701129/f6ac2c40-ea1f-4ed2-acb0-3eb2667f38c9)
- 
+- 로그인 페이지
+  - ![screencapture-localhost-8080-login-2024-07-03-13_45_33](https://github.com/Jung-MinGi/mk.judge/assets/118701129/5e30408c-c0d1-4283-8789-3142a740c314)
+
 
 - 사용자 마이 페이지
   -  해결한 문제 차트 및 목록형태로 표시
