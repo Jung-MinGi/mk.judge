@@ -16,6 +16,7 @@
     - [ThreadLocal](https://github.com/Jung-MinGi/mk.judge/blob/master/threadLocal.java)
     - [Volatile](https://github.com/Jung-MinGi/mk.judge/blob/master/Volatile.java)
     - [Atomic](https://github.com/Jung-MinGi/mk.judge/blob/master/Atomic.java)
+  - [Oauth2 동작]()
       
 <h2>이미지</h2>
 
