@@ -20,7 +20,8 @@
 <h2>이미지</h2>
 
 - 로그인 페이지
-  - ![screencapture-localhost-8080-login-2024-07-03-13_45_33](https://github.com/Jung-MinGi/mk.judge/assets/118701129/5e30408c-c0d1-4283-8789-3142a740c314)
+  - ![screencapture-localhost-8080-login-2024-07-03-13_49_42](https://github.com/Jung-MinGi/mk.judge/assets/118701129/8bf995a8-bb59-47a0-b34e-5d147ebc82cc)
+
 
 
 - 사용자 마이 페이지
