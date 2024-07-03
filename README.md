@@ -20,6 +20,8 @@
 <h2>이미지</h2>
 
 - 로그인 페이지
+  - 자체 로그인 로직
+  - 소셜 로그인 
   - ![screencapture-localhost-8080-login-2024-07-03-13_49_42](https://github.com/Jung-MinGi/mk.judge/assets/118701129/8bf995a8-bb59-47a0-b34e-5d147ebc82cc)
 
 
