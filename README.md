@@ -23,7 +23,8 @@
 - 로그인 페이지
   - 자체 로그인 로직
   - 소셜 로그인 
-  - ![screencapture-localhost-8080-login-2024-07-03-13_49_42](https://github.com/Jung-MinGi/mk.judge/assets/118701129/8bf995a8-bb59-47a0-b34e-5d147ebc82cc)
+  - ![screencapture-localhost-8080-login-2024-07-04-21_36_13](https://github.com/Jung-MinGi/mk.judge/assets/118701129/37295449-21a4-4622-bbb2-af29788aa067)
+
 
 
 
