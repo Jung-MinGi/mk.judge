@@ -17,6 +17,8 @@
     - [Volatile](https://github.com/Jung-MinGi/mk.judge/blob/master/Volatile.java)
     - [Atomic](https://github.com/Jung-MinGi/mk.judge/blob/master/Atomic.java)
   - [Oauth2 동작](https://github.com/Jung-MinGi/mk.judge/blob/master/Oauth2.md)
+  - ajax 데이터 수신
+    - [fetch]() 
   - 유효성 검사
 <h2>이미지</h2>
 
