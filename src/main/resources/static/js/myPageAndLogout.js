@@ -32,8 +32,23 @@ function changeTag() {
 function logout() {
     document.getElementById("logout").addEventListener('click', function (event) {
         event.preventDefault();
-        localStorage.removeItem('token');
-        window.location.href = "/";
+
+
+        fetch("/logout", {
+            method: 'get',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token"),
+                'Content-Type': 'text/plain'
+            }
+
+        }).then(function(res){
+            if(res.ok){
+            alert("로그아웃 성공");
+                    localStorage.removeItem('token');
+                    window.location.href = "/";
+            }
+        })
+//
     })
 }
 

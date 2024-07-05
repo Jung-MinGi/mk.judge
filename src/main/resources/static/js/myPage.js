@@ -2,14 +2,17 @@ function redirectWithToken(){
     fetch("/api/myPage", {
         method: 'get',
         headers: {
+        //사용자의 로그인 상태를 확인하기 위해 토큰값을 헤더에 추가
             'Authorization': 'Bearer ' + localStorage.getItem("token"),
+            //클라이언트가 받은 데이터 포맷
             'Content-Type': 'application/json'
         }
     }).then(function(res){
-        if(res.ok){
+        if(res.ok){//응답이 200으로 정상이면 처리
         return res.json();
         }
     }).then(function(data){
+        //받아온 json데이터를 활용해 적재적소에 데이터값 분배
         console.log(data);
         document.getElementById("username").innerText =data.user.username;
         createChart(data.labels,data.solved,data.backGroundColor);

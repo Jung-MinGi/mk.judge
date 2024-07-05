@@ -1,5 +1,6 @@
 package com.algorihm.mk.judge.config;
 
+import com.algorihm.mk.judge.MyLogoutHandler;
 import com.algorihm.mk.judge.jwt.JwtFilter;
 import com.algorihm.mk.judge.jwt.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +25,7 @@ public class Security {
     private final JwtUtils jwtUtils;
 
     private final ObjectMapper objectMapper;
-
+private final MyLogoutHandler myLogoutHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -41,18 +42,17 @@ public class Security {
         http
                 .httpBasic(AbstractHttpConfigurer::disable);
 
-
         //경로별 인가 작업
         http
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/manager").hasRole("ADMIN")
                         .anyRequest().permitAll());
-
+        http
+                .oauth2Login(auth->auth.loginPage("/login")
+                        .permitAll());
         http
                 .addFilterBefore(new JwtFilter(jwtUtils), LoginFilter.class);
 
-//        http
-//                .addFilterBefore(new CheckIsExpiredJwtFilter(jwtUtils), JwtFilter.class);
 
         http
                 .addFilterAfter(new LoginFilter(authenticationManager(configuration), jwtUtils, objectMapper), UsernamePasswordAuthenticationFilter.class);

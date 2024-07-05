@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.net.URL;
 
-@Service
+//@Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 

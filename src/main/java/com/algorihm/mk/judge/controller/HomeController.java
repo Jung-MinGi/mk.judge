@@ -74,6 +74,8 @@ public class HomeController {
         return "myPage";
     }
 
+
+
     @GetMapping("/ex")
     public void jsonError() {
         throw new RuntimeException("오늘 스쿼트 조진다.");

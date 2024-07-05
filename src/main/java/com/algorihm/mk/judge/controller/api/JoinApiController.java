@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -25,7 +26,11 @@ public class JoinApiController {
         service.join(loginDto);
         return "login";
     }
-
+//    @GetMapping("/logout")
+//    public ResponseEntity<String> logout() {
+//        System.out.println("JoinApiController.logout");
+//        return new ResponseEntity<>("OK",HttpStatus.OK);
+//    }
     @GetMapping("/tmp/getAll")
     public ResponseEntity<ArrayList<User>> get(){
         ArrayList<User> ret = service.getAllUser();
