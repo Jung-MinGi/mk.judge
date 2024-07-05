@@ -18,7 +18,7 @@
     - [Atomic](https://github.com/Jung-MinGi/mk.judge/blob/master/Atomic.java)
   - [Oauth2 동작](https://github.com/Jung-MinGi/mk.judge/blob/master/Oauth2.md)
   - ajax 데이터 수신
-    - [fetch]() 
+    - [fetch](https://github.com/Jung-MinGi/mk.judge/blob/8cee43b8a6a76700e4c9ba76830132e2c346cd51/src/main/resources/static/js/myPage.js#L1) 
   - 유효성 검사
 <h2>이미지</h2>
 
