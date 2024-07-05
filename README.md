@@ -11,13 +11,13 @@
   - [SpringSecurity 무한 리디렉션](https://github.com/Jung-MinGi/mk.judge/blob/master/springsecurity%20redirection.md)
 
 
-- 구현 중 배운 개념
+- 주요 로직
   - 멀티쓰레드 동시성 문제
     - [ThreadLocal](https://github.com/Jung-MinGi/mk.judge/blob/master/threadLocal.java)
     - [Volatile](https://github.com/Jung-MinGi/mk.judge/blob/master/Volatile.java)
     - [Atomic](https://github.com/Jung-MinGi/mk.judge/blob/master/Atomic.java)
   - [Oauth2 동작](https://github.com/Jung-MinGi/mk.judge/blob/master/Oauth2.md)
-      
+  - 유효성 검사
 <h2>이미지</h2>
 
 - 로그인 페이지
